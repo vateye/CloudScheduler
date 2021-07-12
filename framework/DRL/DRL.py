@@ -23,9 +23,8 @@ class RLAlgorithm(object):
     def extract_features(self, valid_pairs):
         features = []
         for machine, inst in valid_pairs:
-            # TODO Add features
-            pass
-            # features.append([machine.cpu, machine.memory] + self.features_extract_func(task))
+            # TODO Add features (Done)
+            features.append([machine.cpu, machine.memory, len(machine.instances)] + self.features_extract_func(inst))
         features = self.features_normalize_func(features)
         return features
 
