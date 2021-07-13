@@ -44,7 +44,7 @@ class RLAlgorithm(object):
         else:
             features = self.extract_features(all_candidates)
             features = tf.convert_to_tensor(features, dtype=np.float32)
-            logits = self.agent.brain(features)
+            logits = self.agent.policynet(features)
             pair_index = tf.squeeze(tf.multinomial(logits, num_samples=1), axis=1).numpy()[0]
 
             node = Node(features, pair_index, 0, clock)
